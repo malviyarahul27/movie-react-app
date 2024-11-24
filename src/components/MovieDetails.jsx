@@ -42,7 +42,7 @@ const MovieDetails = () => {
       }}
       className="w-screen h-screen overflow-auto"
     >
-      <div className="flex w-full h-[10vh] backdrop-blur-sm items-center px-4 lg:px-10">
+      <div className="flex w-full h-[9vh] xl:h-[10vh]   items-center lg:px-10 bg-[#100f0f]">
         <div className="w-[25%] h-[10vh] xl:flex items-center hidden">
           <h1
             onClick={() => navigate(-1)}
@@ -53,7 +53,7 @@ const MovieDetails = () => {
             {info.detail.title}
           </h1>
         </div>
-        <div className="w-full h-full">
+        <div className="w-full h-[10vh]">
           <TopNev />
         </div>
         <div className="hidden lg:flex text-xl lg:text-2xl absolute right-4 lg:right-10 top-3 text-zinc-500">
@@ -90,12 +90,12 @@ const MovieDetails = () => {
           </span>
           {/*  */}
           <p className=" text-zinc-300 xl:w-fit xl:mt-4 mt-2 xl:flex-none justify-center flex xl:gap-0 gap-2">
-            {info.detail.genres.map((genre) => (
+            {info.detail.genres.slice(0, 3).map((genre) => (
               <span
                 key={genre.id}
                 className="border border-zinc-200 rounded-full px-2 py-1 text-sm xl:mr-3"
               >
-                {genre.name}
+                {genre.name.slice(0, 10)}
               </span>
             ))}
           </p>
@@ -105,7 +105,7 @@ const MovieDetails = () => {
             <span className="text-blue-500 cursor-pointer">...more</span>
           </p>
           {/*  */}
-          <div className=" xl:w-fit flex  gap-8 items-center text-lg mt-4">
+          <div className=" xl:w-fit flex gap-3 items-center text-lg mt-4 bg-red">
             <a
               target="_blank"
               href={info.detail.homepage}
@@ -133,55 +133,55 @@ const MovieDetails = () => {
       </div>
       {/* Trailer */}
       <div className="w-full xl:h-[90vh] h-[45vh] bg-blue flex justify-center">
-        <div className="w-[80vw] xl:h-[85vh] h-[40vh] xl:py-0 py-1 rounded-t-xl text-center border bg-ora bg-transparent border-zinc-500 mt-[5vh]">
+        <div className="xl:w-[80vw] w-full xl:h-[85vh] h-[40vh] xl:py-0 py-1 xl:rounded-t-xl text-center border bg-ora bg-transparent border-zinc-500 mt-[5vh]">
           <h1 className="text-zinc-300 uppercase font-semibold xl:text-2xl xl:h-[8vh] h-[5vh] flex justify-center items-center border-b border-zinc-500">
             Trailer
           </h1>
-          <div className="w-full xl:h-[76.8vh] h-[89%] bg-red-800 flex ">
+          <div className="w-full xl:h-[76.8vh] h-[89%] bg-red flex ">
             <Trailer />
           </div>
         </div>
       </div>{" "}
       {/* Cast and Crow */}
-      <div className="w-full xl:h-[100vh] h-[65vh]  flex flex-col xl:justify-evenly justify-evenly bg-black/30 backdrop-blur-xl">
+      <div className="w-full xl:h-[100vh] h-[67vh] pb-2 flex flex-col xl:justify-evenly justify-evenly bg-black/10 backdrop-blur-2xl">
         <div className="w-full xl:h-[45vh] h-[30vh] ">
-          <h1 className="xl:text-2xl xl:px-10 px-5 p-1 xl:p-1 xl:w-40 relative">
+          <h1 className="xl:text-2xl text-zinc-300 xl:px-10 px-5 p-1 xl:p-1 xl:w-40 relative">
             Cast
-            <i class="ri-arrow-right-s-line"></i>
+            <i class="text-zinc-200 ri-arrow-right-s-line"></i>
           </h1>
           <div className="w-full h-[90%]">
             <div className="w-full h-full flex xl:items-end items-center bg-purple overflow-x-auto no-scrollbar">
               {info.credits.cast && info.credits.cast.length > 0 ? (
                 info.credits.cast.map((castMember) => (
                   <div
-                    className="border xl:min-w-44 min-w-32 xl:min-h-64 min-h-54 xl:ml-5 ml-3 rounded-md backdrop-blur-md flex flex-col items-center"
+                    className="border border-zinc-500 xl:min-w-44 w-28 xl:min-h-64 min-h-54 xl:ml-5 ml-3 rounded-md backdrop-blur-md flex flex-col items-center "
                     key={castMember.id}
                   >
-                    <div className="w-full xl:h-[26vh] h-[20vh]  rounded-t-md">
+                    <div className="w-full xl:h-[26vh] h-[19vh] xl:p-0 rounded-t-md flex justify-center items-center bg-black/15">
                       {castMember.profile_path ? (
                         <img
-                          className="w-full h-full object-cover object-center rounded-t-md"
+                          className="xl:w-full xl:h-full w-24 h-24 rounded-full xl:rounded-none object-cover object-center xl:rounded-t-md"
                           src={`https://image.tmdb.org/t/p/w500${castMember.profile_path}`}
                           alt={castMember.name || "Actor Image"}
                         />
                       ) : (
-                        <div className="w-full h-full bg-black/50 flex items-center justify-center rounded-xl">
-                          <span className="xl:w-40 xl:h-40 w-24 h-24 bg-white/50 backdrop-blur-md rounded-full flex justify-center items-center">
+                        <div className="w-full h-full bg-[#100f0f] flex items-center justify-center rounded-xl">
+                          <span className="xl:w-40 xl:h-40  w-24 h-24 bg-white/50 backdrop-blur-md rounded-full flex justify-center items-center">
                             No Image
                           </span>
                         </div>
                       )}
                     </div>
-                    <p className="min-w-44 w-fit xl:px-0 px-2 text-xs xl:text-[2.2vh] xl:mt-2 text-zinc-300 text-center">
+                    <p className="min-w-44 w-fit xl:py-0 pt-1 xl:pt-0 px-2 text-xs xl:text-[2.2vh] xl:mt-2 text-zinc-300 text-center">
                       {castMember.name || castMember.original_name}
                     </p>
-                    <p className="min-w-44 xl:px-0 px-2 text-xs xl:text-[2vh] xl:mt-1 text-zinc-300 text-center">
-                      As: {castMember.character.slice(0, 20)}
+                    <p className="min-w-44 xl:px-0 px-2 xl:pb-0 pb-1  text-xs xl:text-[2vh] xl:mt-1 text-zinc-300 text-center">
+                      As: {castMember.character.slice(0, 13)}
                     </p>
                   </div>
                 ))
               ) : (
-                <p className="text-2xl font-semibold h-full w-full flex justify-center items-center underline">
+                <p className="xl:text-2xl text-zinc-300 font-semibold h-full w-full flex justify-center items-center underline">
                   No cast information available.
                 </p>
               )}
@@ -191,43 +191,44 @@ const MovieDetails = () => {
         {/*  */}
         {/* Crew */}
         <div className="w-full xl:h-[45vh] h-[30vh] bg-red">
-          <h1 className="xl:text-2xl xl:px-10 px-5 xl:p-0 p-1 xl:w-40 relative">
+          <h1 className="xl:text-2xl text-zinc-300 xl:px-10 px-5 xl:p-0 p-1 xl:w-40 relative">
             Crew
-            <i className="ri-arrow-right-s-line"></i>
+            <i className="text-zinc-200 ri-arrow-right-s-line"></i>
           </h1>
           <div className="w-full h-[90%]">
             <div className="w-full h-full flex xl:items-end items-center overflow-x-auto no-scrollbar">
               {info.credits.crew && info.credits.crew.length > 0 ? (
                 info.credits.crew.map((crewMember) => (
                   <div
-                    className="border xl:min-w-44 min-w-32 xl:min-h-64 min-h-54 xl:ml-5 ml-3 rounded-md backdrop-blur-md flex flex-col items-center"
+                    className="border border-zinc-500 xl:min-w-44 w-28 xl:min-h-64 min-h-54 xl:ml-5 ml-3 rounded-md backdrop-blur-md flex flex-col items-center "
                     key={crewMember.id}
                   >
-                    <div className="w-full xl:h-[26vh] h-[20vh] rounded-t-md">
+                    <div className="w-full xl:h-[26vh] h-[19vh] xl:p-0 rounded-t-md flex justify-center items-center bg-black/15">
                       {crewMember.profile_path ? (
                         <img
-                          className="w-full h-full object-cover object-center rounded-t-md"
+                          className="xl:w-full xl:h-full w-24 h-24 rounded-full xl:rounded-none object-cover object-center xl:rounded-t-md"
                           src={`https://image.tmdb.org/t/p/w500${crewMember.profile_path}`}
                           alt={crewMember.name || "Crew Image"}
                         />
                       ) : (
-                        <div className="w-full h-full bg-black/50 flex items-center justify-center rounded-xl">
+                        <div className="w-full h-full bg-[#100f0f] flex items-center justify-center rounded-xl">
                           <span className="xl:w-40 xl:h-40 w-24 h-24 bg-white/50 backdrop-blur-md rounded-full flex justify-center items-center">
                             No Image
                           </span>
                         </div>
                       )}
                     </div>
-                    <p className="min-w-44 w-fit xl:px-0 px-2 text-xs xl:text-[2.2vh] xl:mt-2 text-zinc-300 text-center">
-                      {crewMember.name || crewMember.original_name}
+                    <p className="min-w-44 w-fit xl:py-0 pt-1 xl:pt-0 px-2 text-xs xl:text-[2.2vh] xl:mt-2 text-zinc-300 text-center ">
+                      {crewMember.name.slice(0, 10) ||
+                        crewMember.original_name.slice(0, 10)}
                     </p>
-                    <p className="min-w-44 xl:px-0 px-2 text-xs xl:text-[2vh] xl:mt-1 text-zinc-300 text-center">
-                      Role: {crewMember.job.slice(0, 14)}
+                    <p className="min-w-44 xl:px-0 px-2 xl:pb-0 pb-1  text-xs xl:text-[2vh] xl:mt-1 text-zinc-300 text-center">
+                      Role: {crewMember.job.slice(0, 12)}
                     </p>
                   </div>
                 ))
               ) : (
-                <p className="text-2xl font-semibold h-full w-full flex justify-center items-center underline">
+                <p className="xl:text-2xl text-zinc-300 font-semibold h-full w-full flex justify-center items-center underline">
                   No crew information available.
                 </p>
               )}

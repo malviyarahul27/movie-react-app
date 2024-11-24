@@ -24,7 +24,7 @@ const PersonDetails = () => {
   return info ? (
     <div className="w-screen h-screen overflow-x-auto">
       <div className=" bg-red">
-        <div className="flex w-full px-4 lg:px-10 h-[10vh] backdrop-blur-sm bg-white/5 items-center">
+        <div className="flex w-full px-4 lg:px-10 h-[9vh] xl:h-[10vh] bg-[#100f0f] items-center">
           <div className="xl:w-[25%] h-[10vh] flex items-center">
             <h1
               onClick={() => navigate(-1)}

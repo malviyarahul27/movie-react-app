@@ -10,7 +10,7 @@ const SidebarMenu = () => {
   const [query, setquery] = useState("");
 
   return (
-    <div className="relative xl:hidden ">
+    <div className="relative xl:hidden">
       {/* Menu Button */}
       <button
         onClick={toggleSidebar}
