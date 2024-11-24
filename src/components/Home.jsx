@@ -6,7 +6,6 @@ import Header from "./partials/header";
 import TrendingCard from "./partials/TrendingCard";
 import Loading from "./partials/Loading";
 import Dropdown from "./partials/Dropdown";
-import SidebarMenu from "./partials/SIdebarbutton";
 
 const Home = () => {
   document.title = "ZOR-MOVIES | HOME";
